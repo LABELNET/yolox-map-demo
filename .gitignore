@@ -1,0 +1,6 @@
+datasets
+models
+YOLOX_outputs
+.ipynb_checkpoints
+__pycache__
+YOLOX
