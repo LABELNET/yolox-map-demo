@@ -12,13 +12,14 @@ import cv2
 import torch
 
 from yolox.data.data_augment import ValTransform
+# 修改1，不使用 COCO_CLASS
 #from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
-# 修改 COCO CLASSES 内容
-COCO_CLASSES = [0,1,2]
+# 修改2, COCO CLASSES 内容
+VOC_CLASS = ['0','1','2']
 
 def make_parser():
     parser = argparse.ArgumentParser("YOLOX Demo!")
@@ -103,7 +104,8 @@ class Predictor(object):
         self,
         model,
         exp,
-        cls_names=COCO_CLASSES,
+        # 修改3，VOC_CLASS
+        cls_names=VOC_CLASS,
         trt_file=None,
         decoder=None,
         device="cpu",
@@ -304,7 +306,8 @@ def main(exp, args):
         decoder = None
 
     predictor = Predictor(
-        model, exp, COCO_CLASSES, trt_file, decoder,
+        # 修改 4，VOC_CLASS
+        model, exp, VOC_CLASS, trt_file, decoder,
         args.device, args.fp16, args.legacy,
     )
     current_time = time.localtime()

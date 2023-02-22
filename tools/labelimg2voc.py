@@ -63,7 +63,7 @@ def voc_annotation_data(labelimg_dir):
     """
     创建 VOC 标注数据文件夹， VOCdevkit/VOC2007/Annotations
     """
-    annotation_dir = 'VOCdevkit/VOC2007/Annotations'
+    annotation_dir = 'datasets/VOCdevkit/VOC2007/Annotations'
     if not os.path.exists(annotation_dir):
         os.makedirs(annotation_dir)
     # 复制标注文件
@@ -74,7 +74,7 @@ def voc_image_data(labelimg_dir, image_suffix='.png'):
     """
     创建 VOC 图片数据文件夹，VOCdevkit/VOC2007/JPEGImages
     """
-    image_dir = 'VOCdevkit/VOC2007/JPEGImages'
+    image_dir = 'datasets/VOCdevkit/VOC2007/JPEGImages'
     if not os.path.exists(image_dir):
         os.makedirs(image_dir)
     # 复制图片数据
@@ -96,11 +96,11 @@ def voc_train_data(train_val_ratio=0.7):
     """
     创建 VOC 数据集训练  txt 文件 
     """
-    train_dir = 'VOCdevkit/VOC2007/ImageSets/Main'
+    train_dir = 'datasets/VOCdevkit/VOC2007/ImageSets/Main'
     if not os.path.exists(train_dir):
         os.makedirs(train_dir)
     # 数据集
-    annotation_dir = 'VOCdevkit/VOC2007/Annotations'
+    annotation_dir = 'datasets/VOCdevkit/VOC2007/Annotations'
     train_files, val_files,  test_files = annotations_datasets(
         annotation_dir=annotation_dir,
         train_val_ratio=train_val_ratio

@@ -7,16 +7,21 @@ import torch.distributed as dist
 from yolox.data import get_yolox_datadir
 from yolox.exp import Exp as MyExp
 
+# 修改，引入 Datasets 中的定义
+from voc_datasets import VOCDetection
 
 class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
+
+        # 修改1，目标数量
         self.num_classes = 3
         self.depth = 0.33
         self.width = 0.50
         self.warmup_epochs = 1
 
-        self.max_epoch = 50
+        # 修改2，世代数目
+        self.max_epoch = 30
 
         # ---------- transform config ------------ #
         self.mosaic_prob = 1.0
@@ -28,7 +33,8 @@ class Exp(MyExp):
 
     def get_data_loader(self, batch_size, is_distributed, no_aug=False, cache_img=False):
         from yolox.data import (
-            VOCDetection,
+            # 修改，不使用默认 VOCDetection
+            # VOCDetection,
             TrainTransform,
             YoloBatchSampler,
             DataLoader,
@@ -44,8 +50,9 @@ class Exp(MyExp):
 
         with wait_for_the_master(local_rank):
             dataset = VOCDetection(
+                # 修改3，数据集路径
                 data_dir=os.path.join("datasets", "VOCdevkit"),
-                # 删除 2012
+                # 修改4，训练集
                 image_sets=[('2007', 'train')],
                 img_size=self.input_size,
                 preproc=TrainTransform(
@@ -100,10 +107,13 @@ class Exp(MyExp):
         return train_loader
 
     def get_eval_loader(self, batch_size, is_distributed, testdev=False, legacy=False):
-        from yolox.data import VOCDetection, ValTransform
+        # 修改，不使用默认 VOCDetection
+        from yolox.data import ValTransform
 
         valdataset = VOCDetection(
+            # 修改 5，数据集
             data_dir=os.path.join("datasets", "VOCdevkit"),
+            # 修改 6，验证集
             image_sets=[('2007', 'val')],
             img_size=self.test_size,
             preproc=ValTransform(legacy=legacy),
