@@ -60,8 +60,6 @@
 
 可分别训练，具体见 `coco-map.ipynb` 和  `voc-map.ipynb` 训练过程。
 
-注意：使用 colab 进行训练的，自己电脑自行修改
-
 ## 4、推理
 
 请在自己电脑上安装 YOLOX 环境，然后下载 [coco_best_ckpt.pth](https://drive.google.com/file/d/18OygRLLgU8VYdiaA630Dj-xlEesCeIQL/view?usp=share_link) 模型放入 `models` 文件夹中，使用下面方式直接运行测试
