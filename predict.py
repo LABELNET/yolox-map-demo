@@ -292,7 +292,7 @@ if __name__ == '__main__':
     )
 
     # 测试图片
-    image_file = 'assets/test.png'
+    image_file = 'assets/test_1.png'
     image = cv2.imread(image_file)
     image = coco_predict.predict(image)
     cv2.imwrite('result.png', image)

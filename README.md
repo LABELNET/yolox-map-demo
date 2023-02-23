@@ -1,19 +1,11 @@
 # 地图图标识别
 
-地图标记识别
+地图标记识别，共分三类地图、小区、公园，然后拓展下需求，找出地铁站周围 5km 的小区和找出小区周围 5km 的公园。
 
-- 地铁 ，0 ，subway
-- 小区 ，1 ，house
-- 公园 ，2 ，park
+测试效果图
 
-**迁移学习**
+![](https://github.com/LABELNET/yolox-map-demo/blob/main/assets/result_demo.png)
 
-- model : yolox_s
-
-**需求**
-
-- 标记地铁站周围 5km 的小区
-- 标记出小区周围 5km 的公园
 
 ## 1、工程说明
 
