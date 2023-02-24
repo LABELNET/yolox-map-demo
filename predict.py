@@ -180,15 +180,15 @@ class MapProduct():
 
     def __get_pix(self, distance):
         """ 
-        地图比例为 1cm = 500m，再将厘米转换为像素值
+        地图比例为 1cm = 200m，再将厘米转换为像素值
         """
-        return int(round((96.0 * distance/500.0)/2.54, 2))
+        return int(round((96.0 * distance/200.0)/2.54, 2))
 
     def __get_km(self, pix):
         """
-        地图比例为 1cm = 500m，再将像素转换为距离值 
+        地图比例为 1cm = 200m，再将像素转换为距离值 
         """
-        return round(pix*2.54*500/96/1000, 2)
+        return round(pix*2.54*200/96/1000, 2)
 
     def process(self, boxes, scores, cls_ids):
         """ 
@@ -279,8 +279,8 @@ if __name__ == '__main__':
 
     from coco_exp import Exp as CoCoExp
 
-    # 需求：地图周围5km的小区，小区周围5km的公园
-    map = MapProduct(house_distance=5000, park_distance=5000)
+    # 需求：地图周围2km的小区，小区周围3km的公园
+    map = MapProduct(house_distance=2000, park_distance=3000)
     # 模型推理
     model_file = 'models/coco_best_ckpt.pth'
     coco_exp = CoCoExp()
