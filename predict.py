@@ -252,12 +252,12 @@ class MapPredict(TorchPredict):
         """
         subway_house, house_park = self.map.process(boxes, scores, cls_ids)
         if len(subway_house) > 0:
-            print('subway', subway_house)
+            # print('subway', subway_house)
             color = (0, 0, 255)
             self.__draw_line_km(img, color, subway_house)
 
         if len(house_park) > 0:
-            print('park', house_park)
+            # print('park', house_park)
             color = (255, 0, 0)
             self.__draw_line_km(img, color, house_park)
         return img
